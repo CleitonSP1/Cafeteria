@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Cart</h2>
+<ul>
+    {% for id, quantity in cart_items.items() %}
+    <li>{{ products[id].name }} - {{ quantity }} x ${{ products[id].price }} = ${{ quantity * products[id].price }}</li>
+    {% endfor %}
+</ul>
+<h3>Total: ${{ total }}</h3>
+<form method="POST" action="{{ url_for('checkout') }}">
+    <button type="submit">Checkout</button>
+</form>
+{% endblock %}
